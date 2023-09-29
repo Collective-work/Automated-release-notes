@@ -4,6 +4,8 @@
 
 ✌️ Went from spending **~2h** to do nice release notes for the whole company -> to **15 mins**
 
+![09f698e165f545fbb10f6c8fda98a174](https://github.com/Collective-work/Automated-release-notes/assets/10058703/ebd557ec-ab79-480e-ba75-965bf7a8a7e9)
+
 ## Motivation and our process at Collective
 
 Disclaimer: This is not a ready to go package, that can be used out of the box.
