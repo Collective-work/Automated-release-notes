@@ -10,20 +10,20 @@
 
 Disclaimer: This is not a ready to go package, that can be used out of the box.
 
-But it's simple enough it should give you ideas about how to generated release notes (it's one simple and readable script, 
+But it's simple enough it should give you ideas about how to generated release notes (it's one simple and readable script,
 if you don't like the code, blame ChatGPT - I used it for most of it to go fast).
 
-The release notes is generated from tickets in a done column (you can of course adapt it to your logic, I'm aware the 
+The release notes is generated from tickets in a done column (you can of course adapt it to your logic, I'm aware the
 processes are very different from one company to another)
 
 Here is how our process works overall:
 
 1. We use linear
 2. Every week, tickets with PRs merged go in a column on our engineering board `'Deployed (this week)'`
-3. At the end of every week, I look at all those tickets and create a changelog I push to the team (this used to take 
-me hours, mainly the reason I decided to automate it)
-4. I push the update on slack, adding some ping here and there and some additional picture for context - people react 
-and are generally happy that we progress 😉
+3. At the end of every week, I look at all those tickets and create a changelog I push to the team (this used to take
+   me hours, mainly the reason I decided to automate it)
+4. I push the update on slack, adding some ping here and there and some additional picture for context - people react
+   and are generally happy that we progress 😉
 
 ## What this does
 
@@ -39,14 +39,14 @@ do with AI and release notes 🤩
 - **Bug** - for bugs that we fixed
 - **Misc** - for anything unrelated to the 3 classes above
 
-4. I copy/paste the generated result in slack, modify 2-3 things (of course some things are not in the right place) and 
-add pictures and ping the right people so they see the feature release (hard for GPT to know this 😜)
+4. I copy/paste the generated result in slack, modify 2-3 things (of course some things are not in the right place) and
+   add pictures and ping the right people so they see the feature release (hard for GPT to know this 😜)
 5. Hit send and collect emojis on slack (but I'm an imposter of course, the engineers did all the hard work)
 
 ## Make it work
 
-- Requires `node` and `pnpm` 
-- Install dependencies (`linear sdk` and `openai` at the moment) by doing
+- Requires `node` and `pnpm` (or `npm`)
+- Install dependencies (`linear sdk` and `openai` at the moment + dev dependencies for `typescript`) by doing
 
 ```
 pnpm install
@@ -55,13 +55,17 @@ pnpm install
 or if you want to go fast
 
 ```
+// dev deps for typescript - see here for ts-node https://github.com/TypeStrong/ts-node
+npm install -D typescript tslib @types/node ts-node
+
+// script dependencies
 npm install @linear/sdk openai
 ```
 
 ## Usage
 
 ```
-LINEAR_API_KEY=key OPEN_AI_API_KEY=key node changelog.ts
+LINEAR_API_KEY=key OPEN_AI_API_KEY=key ts-node changelog.ts
 ```
 
 ## The final result
@@ -71,11 +75,11 @@ The result:
 ```
 App:
 [Setting] Allow collectives to change the roles of their members - E-3300
-[Opportunity] Allow collectives to answer questions to better respond to a project opportunit - E-3301  
- 
+[Opportunity] Allow collectives to answer questions to better respond to a project opportunit - E-3301
+
 Admin:
 [Forest Admin] Add a button to check if IBAN is valid - E-3302
-[Email] Send emails by the push of a button to users that need to fill a KYC - E-3303 
+[Email] Send emails by the push of a button to users that need to fill a KYC - E-3303
 
 Bug:
 [UI] Fix side panel not closing on Safari - E-3304
