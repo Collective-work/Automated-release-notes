@@ -1,6 +1,6 @@
 # Automated release notes
 
-🚀 10x your release process
+🚀 10x your release note process
 
 ✌️ Went from spending **~2h** to do nice release notes for the whole company -> to **15 mins**
 
