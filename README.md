@@ -73,17 +73,19 @@ LINEAR_API_KEY=key OPEN_AI_API_KEY=key ts-node changelog.ts
 The result:
 
 ```
-App:
+Final release note:
+
+*App*:
 [Setting] Allow collectives to change the roles of their members - E-3300
 [Opportunity] Allow collectives to answer questions to better respond to a project opportunit - E-3301
 
-Admin:
+*Admin*:
 [Forest Admin] Add a button to check if IBAN is valid - E-3302
 [Email] Send emails by the push of a button to users that need to fill a KYC - E-3303
 
-Bug:
+*Bug*:
 [UI] Fix side panel not closing on Safari - E-3304
 
-Misc:
+*Misc*:
 [CI] Fix CI issues related to Datadog - E-3305
 ```
