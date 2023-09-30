@@ -20,10 +20,10 @@ Here is how our process works overall:
 
 1. We use linear
 2. Every week, tickets with PRs merged go in a column on our engineering board `'Deployed (this week)'`
-3. At the end of every weeks, I look at all those tickets and create a changelog I push to the team (this used to take 
+3. At the end of every week, I look at all those tickets and create a changelog I push to the team (this used to take 
 me hours, mainly the reason I decided to automate it)
 4. I push the update on slack, adding some ping here and there and some additional picture for context - people react 
-and are generally happy 😉
+and are generally happy that we progress 😉
 
 ## What this does
 
@@ -32,16 +32,16 @@ do with AI and release notes 🤩
 
 1. The script fetch all the cards in the column `'Deployed (this week)'`
 2. It passes them through GPT-3 with a prompt TLDR; it asks it to summarise in 1 line more or less the ticket and categorise it
-3. We create the final release note, with our 4 main categories (this is what we use for release at Collective):
+3. We create the final release note, with our 4 main categories (to better categorise what was shipped), these are:
 
-- App (for new feature and application interation)
-- Admin (for new admin features, as we are a pretty ops heavy company)
-- Bug (for bugs that we fixed)
-- Misc (for anything unrelated to the 3 classes above)
+- **App** - for new feature and application interaction
+- **Admin** - for new admin features, as we are a pretty ops heavy company
+- **Bug** - for bugs that we fixed
+- **Misc** - for anything unrelated to the 3 classes above
 
 4. I copy/paste the generated result in slack, modify 2-3 things (of course some things are not in the right place) and 
 add pictures and ping the right people so they see the feature release (hard for GPT to know this 😜)
-5. Hit send and collect emojis on slack (but I'm an imposter, it's my engineers that did all the hard work)
+5. Hit send and collect emojis on slack (but I'm an imposter of course, the engineers did all the hard work)
 
 ## Make it work
 
@@ -70,12 +70,12 @@ The result:
 
 ```
 App:
-[Setting] Allow collectives to change the roles of their members
-[Opportunity] Allow collectives to answer questions to better respond to a project opportunity  
+[Setting] Allow collectives to change the roles of their members - E-3300
+[Opportunity] Allow collectives to answer questions to better respond to a project opportunit - E-3301  
  
 Admin:
-[Forest Admin] Add a button to check if IBAN is valid
-[Email] Send emails by the push of a button to users that need to fill a KYC 
+[Forest Admin] Add a button to check if IBAN is valid - E-3302
+[Email] Send emails by the push of a button to users that need to fill a KYC - E-3303 
 
 Bug:
 [UI] Fix side panel not closing on Safari - E-3304
