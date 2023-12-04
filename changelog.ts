@@ -45,11 +45,11 @@ async function summarise(tickets: string[]): Promise<SummarisedTicket[]> {
   - the person responsible for it (it's a name)
   - a url, to link to the ticket
 
-  Each feature is either one of the 4 classes below:
-  - ${APP_CLASS}: it means this is a product feature that impacted the core of our application (label is often product, but not always, and high estimate and high priority are often product features)
-  - ${ADMIN_CLASS}: it means it touched forest admin or something related to admin tasks, it's rarely a product task (label is often "forest admin" but not always) - some examples of things that are admin include "the Shortlister", "forest admin workspaces"
-  - ${BUG_CLASS}: it means it was a bug fix (generally tagged with a label "bug")
-  - ${MISC_CLASS}: anything that does not fit clearly in one of those 3 categories above
+  Each feature is either one of the 4 classes below, and cannot be anything else:
+  1) ${APP_CLASS} - it means this is a product feature that impacted the core of our application (label is often product, but not always, and high estimate and high priority are often product features)
+  2) ${ADMIN_CLASS} - it means it touched forest admin or something related to admin tasks, it's rarely a product task (label is often "forest admin" but not always) - some examples of things that are admin include "the Shortlister", "forest admin workspaces"
+  3) ${BUG_CLASS} - it means it was a bug fix (generally tagged with a label "bug")
+  4) ${MISC_CLASS} - anything that does not fit clearly in one of those 3 categories above
 
   Now given all the context your have, summarise a ticket in the json structure below
 
@@ -236,6 +236,19 @@ function formatReleaseNote(tickets: SummarisedTicket[]) {
 
     resultString += "\n";
   });
+
+  // Step 3: Handle the miss labeled
+  resultString += `*Other*:\n`;
+
+  tickets.forEach(ticket => {
+    if (CLASS_ORDER.includes(ticket.class)) {
+      return
+    }
+
+    resultString += `[${ticket.category}] ${ticket.summary} - [${ticket.identifier}](${ticket.url})\n`;
+  })
+
+  resultString += "\n";
 
   return resultString;
 }
